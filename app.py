@@ -1,7 +1,10 @@
 from flask import Flask, render_template, url_for, jsonify
+from database import load_jobs_from_db, load_job_from_db  # Importing functions to load jobs from the database
 #image ko load karne ke liye templates se url_for ko import karna padega
 # Create a Flask web application instance ya variable jisme flask application load hogi ye deployment ke vakt gunicorn app:app :- app.py:name of variable
 app = Flask(__name__)
+
+
 
 # data kisi aur jagah hota database mei hamne yha par dynamically data ko render kiya hai
 JOBS = [{
@@ -40,6 +43,10 @@ def hello_world():
 def list_jobs():
     return jsonify(JOBS)  #jsonify takes any object and converts into a json object
 
+@app.route("/job/<id>")  # is function ko register karna padega at route(Second route or URL) & JOBs information ko lenge aur convert karenge into JSON String :- jsonify(helper function) ko import(or call) karna isko
+def show_job(id):
+    job = load_job_from_db(id)
+    return jsonify(job)  #jsonify takes any object and converts into a json object
 
 # when people say rest API or Json API or API endpoint this is what they mean that your server is returning some information not just as HTML(HTML version of that information) but the same information is also accessible in the form of Json in the form where it's just the data and then u can do whatever u want with the data
 print("Hello flask")

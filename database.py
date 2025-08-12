@@ -25,22 +25,32 @@ engine = create_engine(
 def load_jobs_from_db():
     # This function can be used to load jobs from a database
     # For now, we will return the static JOBS list
-    
+
     with engine.connect() as conn:
         result = conn.execute(text("select * from jobs"))
     #  print(result.all()) # uper wali query se output display karne ka tarika (result object hai usme data store hai query ka response ka ya consume kar rkha hai but hum isse dubara se use nahi kar sakte list empty ho jayegi) iterator hai
     # this print will give list of rows of results at once (means all the rows of the table or list of tuples)
-        jobs = [] # list to store dictionaries
+    jobs = [] # list to store dictionaries
  # result is an iterator, so we can iterate over it to get each row
-        for row in result.all():
-            jobs.append(row._asdict())  # convert each row to a dictionary and append to the list ._asdict ke jagah dict(row) bhi use kar sakte hain
-        return jobs  # return the list of dictionaries where each dictionary represents a row of the table with column names as keys and values as values
+    for row in result.all():
+        jobs.append(row._asdict())  # convert each row to a dictionary and append to the list ._asdict ke jagah dict(row) bhi use kar sakte hain leking yha mat karna kyunki row ek tuple hai aur tuple ko dict mei convert nahi kar sakteTypeError: cannot convert dictionary update sequence element #0 to a sequence
+    return jobs  # return the list of dictionaries where each dictionary represents a row of the table with column names as keys and values as values
 
 # with engine.connect() as conn:
 #      result = conn.execute(text("select * from jobs"))
     #  print(result.all()) # uper wali query se output display karne ka tarika (result object hai usme data store hai query ka response ka ya consume kar rkha hai but hum isse dubara se use nahi kar sakte list empty ho jayegi) iterator hai
     # this print will give list of rows of results at once (means all the rows of the table or list of tuples)
 
+def load_job_from_db(id): # yeh function alag hai uper wale se yeh job hai confuse ho gya tha mai
+    with engine.connect() as conn:
+        result = conn.execute(text("SELECT * FROM jobs WHERE id = :val"),
+        {'val': id}  #  pass parameters as dict       using a parameterized query to prevent SQL injection attacks
+        )         
+    rows = result.all()  # this will give all the rows of the table as a list of tuples
+    if len(rows) == 0: # agar koi row nahi hai to toh voh zero hi hoga ex :- agar 5 rows hai aur 10 select karte hai toh zero rows return karega
+        return None
+    else:
+        return rows[0]._asdict()  # this will return the first row as a dictionary with column names as keys and values as values error ayegi tabhi yhi use kar rhe naa ki dict(rows[0]) kyunki rows ek tuple hai aur tuple ko dict mei convert nahi kar sakte
 
 
 
