@@ -1,0 +1,19 @@
+modules = ["python-3.11"]
+
+[workflows]
+runButton = "Run Python App"
+
+[[workflows.workflow]]
+name = "Run Python App"
+author = 45788864
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python3 app.py"
+
+[nix]
+
+[[ports]]
+localPort = 5000
+externalPort = 80
