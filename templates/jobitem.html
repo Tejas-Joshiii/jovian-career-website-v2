@@ -8,7 +8,7 @@
         </div>
         {% if 'salary' in job %} <!--Agar slary mention hogi tabhi display karega-->
         <div>
-            <b>Salary</b>{{job['salary']}}
+            <b>Salary:</b>{{job['salary']}} {{job['currency']}} <!--currency bhi mention hogi toh hi display karega-->
         </div>
         {% endif %}
     </div>
