@@ -33,7 +33,7 @@ def show_job(id):
     # return jsonify(job)  #jsonify takes any object and converts into a json object but hame isse HTML jobpage mei render karna hai job hame id url me de job ki information ache se dikhe
     if not job:  # agar job nahi mila toh 404 error return karna hai
         return "Job not found", 404 # agar yeh if chal gya toh niche wala code nahi chalega
-    return render_template("jobpage.html", job=job)  # job is a dictionary with all the information about the job
+    return render_template("jobpage.html", job=job)  # job is a dictionary with all the information about the job iske madad se data ko jobpage.html mei render karenge
 
 # when people say rest API or Json API or API endpoint this is what they mean that your server is returning some information not just as HTML(HTML version of that information) but the same information is also accessible in the form of Json in the form where it's just the data and then u can do whatever u want with the data
 print("Hello flask")
