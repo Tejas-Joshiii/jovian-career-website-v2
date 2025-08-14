@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Submitted</title>
+    {% include 'bootstrap.html' %} {# this will include the bootstrap file in this template #}
+</head>
+
+<body>
+    {% include 'nav.html' %}
+    {% include 'banner.html' %} {# this will include the banner file in this template #}
+    <div class="container">
+        <h1 class="text-center mt-2 mb-4">
+            Jovian Careers
+        </h1>
+        <div class="mb-2">
+        <b>Full Name:-&nbsp;</b>
+        <div>{{application['full_name']}}</div>
+        </div>
+        <div class="mb-2">
+        <b>Email:-&nbsp;</b>
+        <div>{{application['emailId']}}</div>
+        </div>
+        <div class="mb-2">
+        <b>LinkedIn URL:-&nbsp;</b>
+        <div>{{application['linkedInURL']}}</div>
+        </div>
+        <div class="mb-2">
+        <b>Education:-&nbsp;</b>
+        <div>{{application['Edu']}}</div>
+        </div>
+        <div class="mb-2">
+        <b>Work Experience:-&nbsp;</b>
+        <div>{{application['work']}}</div>
+        </div>
+        <div>
+        <b>Resume URL:-&nbsp;</b>
+        <div>{{application['resume_url']}}</div>
+        </div>
+    </div>
+
+    <h1 class="text-center mt-4" style="text-transform: capitalize;">Your Application is Submitted For the role of {{job['title']}} at Jovian</h1> {# {{job['title']}} use is liye kar paa rhe kyunki job = job in render template jahan bhi kuch aisa karunga ek bar render template wala code check karna #}
+    <p class="text-center" style="word-break:keep-all;">Thank you for applying to the job at Jovian Carriers. We will review your application and
+        get back to you soon.</p>
+    <div class="text-center">
+        <a href="/" class="btn btn-primary">Go to Home</a>
+    </div>
+    {% include 'footer.html' %}
+</body>
+
+</html>

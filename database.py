@@ -52,7 +52,25 @@ def load_job_from_db(id): # yeh function alag hai uper wale se yeh job hai confu
     else:
         return rows[0]._asdict()  # this will return the first row as a dictionary with column names as keys and values as values error ayegi tabhi yhi use kar rhe naa ki dict(rows[0]) kyunki rows ek tuple hai aur tuple ko dict mei convert nahi kar sakte
 
-
+def add_application_to_db(job_id, data): # data here dictionary form info carry karta hai
+    # This function can be used to add an application to the database    
+    # Here you would typically insert the application data into the database
+    # using an INSERT SQL statement
+    # Example: conn.execute(text("INSERT INTO applications (job_id, name, email) VALUES (:job_id, :name, :email)"), {'job_id': job_id, 'name': application_data['full_name'], 'email': application_data['emailId']})
+    with engine.connect() as conn:
+        query = text("""INSERT INTO applications (job_id, full_name, email, linkedIn_URL, education, work_experience, resume_url) VALUES (:job_id, :full_name, :email, :linkedIn_URL, :education, :work_experience, :resume_url)""")
+        conn.execute(query, 
+                 {
+                'job_id': job_id,
+                'full_name': data['full_name'],
+                'email': data['emailId'],
+                'linkedIn_URL': data['linkedInURL'],
+                'education': data['Edu'],            
+                'work_experience': data['work'],     
+                'resume_url': data['resume_url']
+            }
+        )
+        conn.commit()  # commit the transaction to save the changes to the database
 
 
 # result_dicts = [] # list to store dictionaries

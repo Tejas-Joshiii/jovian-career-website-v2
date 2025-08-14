@@ -1,21 +1,39 @@
 <h4 class="text-center mb-3">Application form</h4>
-<form action="post" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+<form action="/job/{{job['id']}}/apply" method="post"
+    style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
     <div class="mb-3" style="width: 260px;padding:22px;">
         <div class="mb-2">
             <label for="full_name">Full Name</label><br>
-            <input type="text" name="full_name" id="full_name" placeholder="Enter your full name" style="width: 222px;" required>
+            <input type="text" name="full_name" id="full_name" placeholder="Enter your full name" style="width: 232px;"
+                required>
         </div>
         <div class="mb-2">
             <label for="emailId">Email</label><br>
-            <input type="email" name="emailId" id="emailId" placeholder="JohnnyEnglish@gmail.com " style="width: 222px;" required>
+            <input type="email" name="emailId" id="emailId" placeholder="JohnnyEnglish@gmail.com " style="width: 232px;"
+                required>
+        </div>
+        <div class="mb-2">
+            <label for="linkedInURL">LinkedIn URL</label><br>
+            <input type="text" name="linkedInURL" id="linkedInURL" style="width: 232px;"
+                placeholder="https://www.linkedin.com/in/johnyenglish/">
+        </div>
+
+        <div class="mb-2">
+            <label for="Edu">Education</label>
+            <textarea name="Edu" id="Edu" style="width: 232px;"></textarea>
+        </div>
+        <div class="mb-2">
+            <label for="work">Work Experience</label>
+            <input type="text" name="work" id="work" placeholder="Enter your work experience" width="222px"
+                style="width: 232px;">
         </div>
         <div class="mb-4">
-            <label for="linkedInURL">LinkedIn URL</label><br>
-            <input type="text" name="linkedInURL" id="linkedInURL" style="width: 222px;"
-                placeholder="https://www.linkedin.com/in/johnyenglish/" required>
+            <label for="resume_url">Resume URL</label>
+            <input type="text" name="resume_url" id="resume_url" placeholder="https://www.dropbox.com/s/xyz/resume.pdf"
+                style="width: 232px;">
         </div>
         <div class="text-center">
-            <button class="btn btn-primary" type="submit">Submit</button>
+            <button class="btn btn-primary">Submit</button>
         </div>
     </div>
 </form>
