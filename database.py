@@ -52,7 +52,7 @@ def load_job_from_db(id): # yeh function alag hai uper wale se yeh job hai confu
     else:
         return rows[0]._asdict()  # this will return the first row as a dictionary with column names as keys and values as values error ayegi tabhi yhi use kar rhe naa ki dict(rows[0]) kyunki rows ek tuple hai aur tuple ko dict mei convert nahi kar sakte
 
-def add_application_to_db(job_id, data): # data here dictionary form info carry karta hai
+def add_application_to_db(job_id, data): # data here dictionary form info carry karta hai job_id me id pass kiya gya hai is funcn ko app.py mai call kiya hai yeh dono parameters hai isme variable pass hote hai
     # This function can be used to add an application to the database    
     # Here you would typically insert the application data into the database
     # using an INSERT SQL statement
@@ -72,7 +72,7 @@ def add_application_to_db(job_id, data): # data here dictionary form info carry 
         )
         conn.commit()  # commit the transaction to save the changes to the database
 
-
+ 
 # result_dicts = [] # list to store dictionaries
 # # result is an iterator, so we can iterate over it to get each row
 # for row in result.all():

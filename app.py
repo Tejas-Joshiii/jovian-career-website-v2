@@ -35,6 +35,11 @@ def show_job(id):
         return "Job not found", 404 # agar yeh if chal gya toh niche wala code nahi chalega
     return render_template("jobpage.html", job=job)  # job is a dictionary with all the information about the job iske madad se data ko jobpage.html mei render karenge
 
+@app.route("/api/job/<id>")  # is function ko register karna padega at route(Second route or URL) & JOBs information ko lenge aur convert karenge into JSON String :- jsonify(helper function) ko import(or call) karna isko (is function isko api ke through access karna hai)
+def show_job_json(id):
+    job = load_job_from_db(id)
+    return jsonify(job)
+
 # method POST ka use karte hai jab hame server ko kuch data bhejna hota hai jaise form data jab user form submit karta hai toh hame server ko data bhejna hota hai
 @app.route("/job/<id>/apply", methods=['POST'])  # is function ko register karna padega at route(Second route or URL) & JOBs information ko lenge aur convert karenge into JSON String :- jsonify(helper function) ko import(or call) karna isko
 # "/job/<id>/apply" also expects a post method becoz we have used post method in the form in jobpage.html so it expects some data to be posted by the browser and not send a url which becomes bulky and slow we add more things in form
