@@ -67,3 +67,4 @@ print("check kar hre hai")
 # requirement.txt file mei ham jo library isme import karenge vo dalaenge kyunki render.com ko pata nahi hai ki isko install karne ki jarurat hai
 # gunicorn ek production server hai for python when python says its for devlopment server not for production use isko use karke ham flask application ko production mei laate hai
 # pip ek package manager hai for python it is used to install liberaries in Python & u are just telling pip look into the requirements.txt file in each line there will be name of the liberary and plz install that liberary for me
+#testing purpose we are using debug=True so that if there is any error in the code it will show the error in the browser and not just a blank page
