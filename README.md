@@ -1,2 +1,1 @@
-# jovian-carrier-website
-A carrier website for jovian
+Git mei kuch gadbad
